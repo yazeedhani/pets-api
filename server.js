@@ -1,10 +1,11 @@
 // require necessary NPM packages
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
+const cors = require('cors') // is how you allow or disallow access to your API
 
 // require route files
-const exampleRoutes = require('./app/routes/example_routes')
+const petRoutes = require('./app/routes/pet_routes')
+const toyRoutes = require('./app/routes/toy_routes')
 const userRoutes = require('./app/routes/user_routes')
 
 // require middleware
@@ -65,7 +66,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
-app.use(exampleRoutes)
+app.use(petRoutes) // could've also used app.use('/pets', petRoutes)
+app.use(toyRoutes) 
 app.use(userRoutes)
 
 // register error handling middleware
